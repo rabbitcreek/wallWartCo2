@@ -98,6 +98,10 @@ void setup() {
   digitalWrite(13, LOW);
   // Enjoy the splash screen for 2 seconds
   delay(500);
+  gadgetBle.writeCO2(55);
+  gadgetBle.writeTemperature(55);
+  gadgetBle.writeHumidity(55);
+  gadgetBle.commit(); 
  
 }
 
@@ -133,6 +137,11 @@ void loop() {
   Serial.print("\t");
   Serial.print(humidity);
   Serial.println();
+  if(co2 < 400){
+    co2=55;
+    temperature = 55;
+    humidity = 55;
+  }
       gadgetBle.writeCO2(co2);
       gadgetBle.writeTemperature(temperature);
       gadgetBle.writeHumidity(humidity);
